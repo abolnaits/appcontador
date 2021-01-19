@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,10 +23,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Init
-        txtNumero = (TextView) findViewById(R.id.txtNumero);
+        txtNumero = (EditText) findViewById(R.id.txtNumero);
         txtContador = (TextView) findViewById(R.id.txtContador);
         txtContador.setText("0");
         contador = 0;
+        //EditText estara a la escucha cuando se cierra el teclado
+        EventoTeclado tecladoEv = new EventoTeclado();
+        txtNumero.setOnEditorActionListener(tecladoEv);
+    }
+
+    //Clase Interna para establecer un Listener
+    class EventoTeclado implements TextView.OnEditorActionListener{
+
+        @Override
+        public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+            //Si se cierra el teclado
+            if(i== EditorInfo.IME_ACTION_DONE){
+                reset(null);
+            }
+            return false;
+        }
     }
 
     //Setear el valor del textp

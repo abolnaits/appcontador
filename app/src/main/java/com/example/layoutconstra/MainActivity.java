@@ -12,13 +12,15 @@ public class MainActivity extends AppCompatActivity {
     public int contador;
     //Vistas
     TextView txtNumero;
-    
+    TextView txtContador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Init
         txtNumero = (TextView) findViewById(R.id.txtNumero);
+        txtContador = (TextView) findViewById(R.id.txtContador);
+        txtContador.setText("0");
         contador = 0;
     }
 
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     */
     public void sumar(View Vista){
         contador = contador + 1;
-        txtNumero.setText(String.valueOf(contador));
+        txtContador.setText(String.valueOf(contador));
         //setear();
     }
 
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 //txtNumero.setText(String.valueOf(contador));
             }
         }
-        txtNumero.setText(String.valueOf(contador));
+        txtContador.setText(String.valueOf(contador));
 
         //setear();
     }

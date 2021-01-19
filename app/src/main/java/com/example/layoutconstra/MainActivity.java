@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 //txtNumero.setText(String.valueOf(contador));
             }else{
                 contador = 0;
-                //txtNumero.setText(String.valueOf(contador));
+                //txtContador.setText(String.valueOf(contador));
             }
         }
         txtContador.setText(String.valueOf(contador));
@@ -56,6 +56,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void reset(View Vista){
         contador = 0;
-        //setear();
+        System.out.println("XXX");
+        //Obtengo el valor del input
+        try{
+            contador = Integer.parseInt(txtNumero.getText().toString());
+        }catch (Exception e){
+            contador = 0;
+        }
+
+        txtContador.setText(String.valueOf(contador));
+
     }
+
+
 }

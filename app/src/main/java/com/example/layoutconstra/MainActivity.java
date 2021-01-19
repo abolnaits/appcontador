@@ -2,8 +2,10 @@ package com.example.layoutconstra;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -65,7 +67,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         txtContador.setText(String.valueOf(contador));
-
+        //Obtengo el metodo de entrada
+        //Teclado
+        InputMethodManager teclado = (InputMethodManager) this.getSystemService(INPUT_METHOD_SERVICE);
+        teclado.hideSoftInputFromWindow(txtContador.getWindowToken(),0);
     }
 
 
